@@ -77,7 +77,8 @@ project-root/
 ├── static/             # Frontend assets (CSS, JS)
 ├── templates/          # HTML templates
 ├── data/               # Static JSON data for testing
-└── README.md
+├── README.md           # This file
+└── STAGES.md           # Step-by-step guide for building the app incrementally
 ```
 
 ---
