@@ -1,1 +1,92 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960,
+    "edition": "1st",
+    "genre": "Fiction",
+    "synopsis": "Set in the American South during the 1930s, the novel follows young Scout Finch as her father, lawyer Atticus Finch, defends a Black man falsely accused of raping a white woman, exploring themes of racial injustice and moral growth."
+  },
+  {
+    "id": 2,
+    "title": "1984",
+    "author": "George Orwell",
+    "year": 1949,
+    "edition": "",
+    "genre": "Dystopian Fiction",
+    "synopsis": "In a totalitarian future society ruled by Big Brother, Winston Smith secretly rebels against the oppressive Party, only to discover the terrifying lengths the government will go to crush independent thought and individuality."
+  },
+  {
+    "id": 3,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925,
+    "edition": "",
+    "genre": "Literary Fiction",
+    "synopsis": "Narrated by Nick Carraway, the novel follows the mysterious millionaire Jay Gatsby and his obsessive pursuit of Daisy Buchanan against the backdrop of the Roaring Twenties, examining themes of wealth, class, and the American Dream."
+  },
+  {
+    "id": 4,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "year": 1813,
+    "edition": "2nd",
+    "genre": "Romance",
+    "synopsis": "Elizabeth Bennet navigates issues of manners, upbringing, and marriage in early 19th-century England, ultimately finding love with the proud and wealthy Mr. Darcy after a series of misunderstandings and personal growth for both characters."
+  },
+  {
+    "id": 5,
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "year": 1979,
+    "edition": "",
+    "genre": "Science Fiction / Comedy",
+    "synopsis": "After Earth is demolished to make way for a hyperspace bypass, Arthur Dent is whisked across the universe by his alien friend Ford Prefect, encountering bizarre civilizations and learning that the answer to life, the universe, and everything is 42."
+  },
+  {
+    "id": 6,
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "year": 1937,
+    "edition": "Revised",
+    "genre": "Fantasy",
+    "synopsis": "Bilbo Baggins, a comfort-loving hobbit, is swept into an epic quest by the wizard Gandalf and a company of dwarves to reclaim their homeland and its treasure from the fearsome dragon Smaug."
+  },
+  {
+    "id": 7,
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "year": 1965,
+    "edition": "",
+    "genre": "Science Fiction",
+    "synopsis": "On the desert planet Arrakis, young Paul Atreides navigates political intrigue, ecological struggle, and destiny as he rises to lead the native Fremen people and control the universe's most valuable substance: the spice melange."
+  },
+  {
+    "id": 8,
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "year": 1951,
+    "edition": "",
+    "genre": "Literary Fiction",
+    "synopsis": "Sixteen-year-old Holden Caulfield recounts the days following his expulsion from prep school, wandering New York City while grappling with alienation, identity, and the perceived phoniness of the adult world."
+  },
+  {
+    "id": 9,
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "year": 1932,
+    "edition": "3rd",
+    "genre": "Dystopian Fiction",
+    "synopsis": "In a future world engineered for stability through genetic conditioning and state-enforced happiness, Bernard Marx questions the cost of a society where freedom and individuality have been sacrificed in the name of social order."
+  },
+  {
+    "id": 10,
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "year": 1988,
+    "edition": "",
+    "genre": "Philosophical Fiction",
+    "synopsis": "An Andalusian shepherd boy named Santiago travels from Spain to the Egyptian desert in search of treasure, encountering a series of characters who help him discover that the true treasure lies in following one's Personal Legend."
+  }
+]
