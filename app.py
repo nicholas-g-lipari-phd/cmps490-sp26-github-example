@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify, render_template
 
 
 def create_app():
@@ -15,6 +15,10 @@ def create_app():
     @app.get("/")
     def index():
         return render_template("index.html")
+
+    @app.get("/api/ping")
+    def api_ping():
+        return jsonify({"status": "ok"})
 
     # TODO: register blueprints
 
