@@ -1,4 +1,6 @@
-from flask import Flask, jsonify, render_template
+from datetime import datetime, timezone
+
+from flask import Flask, jsonify, render_template, request
 
 
 def create_app():
@@ -18,7 +20,16 @@ def create_app():
 
     @app.get("/api/ping")
     def api_ping():
-        return jsonify({"status": "ok"})
+        return jsonify(
+            {
+                "status": "ok",
+                "message": "API reachable",
+                "server_time": datetime.now(timezone.utc).isoformat(),
+                "user_agent": request.headers.get("User-Agent", ""),
+                "client_ip": request.remote_addr,
+                "method": request.method,
+            }
+        )
 
     # TODO: register blueprints
 
