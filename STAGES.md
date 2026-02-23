@@ -44,7 +44,7 @@ This project is designed to be built in small, testable steps. Each stage leaves
 ---
 
 ## Stage 2 — First API Endpoint Returning JSON
-**Goal:** Learn the idea of an API endpoint by returning JSON from Flask and observing request/response information.
+**Goal:** Learn the idea of an API endpoint by returning JSON from Flask, observing request/response information, and displaying it in a readable page.
 
 **Tasks**
 
@@ -78,19 +78,59 @@ This project is designed to be built in small, testable steps. Each stage leaves
    }
    ```
 
+3. **Add a readable “Ping Viewer” page**
+   Create a simple HTML page that fetches `/api/ping` and displays the JSON in a formatted block.
+
+   - Add a new route:
+     - `GET /ping` returns an HTML page (template is fine)
+   - On the page, use JavaScript to fetch `/api/ping`
+   - Display the JSON using `JSON.stringify(data, null, 2)` inside a `<pre>` element
+
+4. **Add CSS styling for the JSON block**
+   Add a CSS file (or extend your existing one) to make the JSON output easy to read.
+
+   Suggested CSS (example):
+
+   ```css
+   body {
+     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+     margin: 2rem;
+     line-height: 1.4;
+   }
+
+   .card {
+     max-width: 900px;
+     padding: 1rem 1.25rem;
+     border: 1px solid #ddd;
+     border-radius: 10px;
+   }
+
+   pre.json {
+     margin: 0;
+     padding: 1rem;
+     background: #f6f8fa;
+     border: 1px solid #e5e7eb;
+     border-radius: 8px;
+     overflow: auto;
+     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+     font-size: 0.95rem;
+     white-space: pre;
+   }
+   ```
+
 **Definition of Done**
 
-- `/api/ping` returns valid JSON.
-- The response includes:
+- `/api/ping` returns valid JSON including:
   - status
   - message
   - server time
   - user agent
   - client IP
   - request method
+- Visiting `/ping` shows a readable page with formatted JSON (not raw JSON in the browser).
+- The JSON block is styled with CSS for readability (padding, monospace font, and scroll for long content).
 - You can explain:
-  - “This endpoint returns data, not a web page.”
-- You can identify which values come from the client (browser) and which come from the server.
+  - “`/api/ping` is an API endpoint (data). `/ping` is a web page (HTML) that displays the data.”
 
 ---
 
