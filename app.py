@@ -31,6 +31,10 @@ def create_app():
             }
         )
 
+    @app.get("/ping")
+    def ping_viewer():
+        return render_template("ping.html")
+
     # TODO: register blueprints
 
     return app
