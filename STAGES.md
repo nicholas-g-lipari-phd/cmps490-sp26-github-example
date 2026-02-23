@@ -44,16 +44,53 @@ This project is designed to be built in small, testable steps. Each stage leaves
 ---
 
 ## Stage 2 — First API Endpoint Returning JSON
-**Goal:** Learn the idea of an API endpoint by returning JSON from Flask.
+**Goal:** Learn the idea of an API endpoint by returning JSON from Flask and observing request/response information.
 
 **Tasks**
-- Add a route:
-  - `GET /api/ping` returns JSON like `{"status": "ok"}`.
-- In the browser, open `/api/ping` and observe JSON output.
+
+1. **Return basic status**
+   - Add a route:
+     - `GET /api/ping` returns JSON like:
+       ```json
+       {"status": "ok"}
+       ```
+   - In the browser, open `/api/ping` and observe JSON output.
+
+2. **Add diagnostic information**
+   After confirming the status works, extend the response to include:
+
+   - a message (for example, `"API reachable"`)
+   - server time
+   - browser user agent
+   - client IP address
+   - request method
+
+   Example response:
+
+   ```json
+   {
+     "status": "ok",
+     "message": "API reachable",
+     "server_time": "...",
+     "user_agent": "...",
+     "client_ip": "...",
+     "method": "GET"
+   }
+   ```
 
 **Definition of Done**
-- `/api/ping` returns valid JSON and you can explain:
+
+- `/api/ping` returns valid JSON.
+- The response includes:
+  - status
+  - message
+  - server time
+  - user agent
+  - client IP
+  - request method
+- You can explain:
   - “This endpoint returns data, not a web page.”
+- You can identify which values come from the client (browser) and which come from the server.
 
 ---
 
