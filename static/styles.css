@@ -1,0 +1,29 @@
+body {
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	margin: 2rem;
+	line-height: 1.4;
+}
+
+main {
+	max-width: 900px;
+}
+
+.card {
+	max-width: 900px;
+	padding: 1rem 1.25rem;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+pre.json {
+	margin: 0;
+	padding: 1rem;
+	background: #f6f8fa;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	overflow: auto;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono", "Courier New", monospace;
+	font-size: 0.95rem;
+	white-space: pre;
+}
