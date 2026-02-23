@@ -7,8 +7,14 @@ This project is designed to be built in small, testable steps. Each stage leaves
 - **Frontend**: what runs in the browser (HTML/CSS/JS).
 - **Backend**: Flask server code that receives requests and returns responses.
 - **API / REST endpoint**: a URL your frontend calls to get data (usually JSON).
+- **Route**: a Flask function mapped to a URL path (for example, `/ping` or `/api/ping`).
 - **JSON**: a common format for structured data (`{...}` and `[...]`).
 - **GET request**: a request used to retrieve data (no data is changed).
+- **Query parameter**: key-value data after `?` in a URL (for example, `?title=term`).
+- **Path parameter**: a value embedded in the URL path (for example, `/api/books/<id>`).
+- **User-Agent**: a request header identifying the browser or client making the request.
+- **Client IP**: the network address of the requester (often `request.remote_addr` in Flask).
+- **Viewer page**: an HTML page that fetches data from an API endpoint and displays it (for example, `/ping` displays `/api/ping`).
 
 ---
 
