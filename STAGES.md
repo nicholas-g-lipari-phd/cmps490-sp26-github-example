@@ -279,7 +279,135 @@ OR
 
 ---
 
-## Stage 10 — Error Handling and “Polish”
+## Stage 10 — API Keys with `.env` + OMDb Movie Lookup (Books Adapted Into Movies)
+**Goal:** Learn how to use API keys safely with environment variables and extend the app by enriching book results with movie adaptation data from OMDb.
+
+### Concept
+- Google Books (or your static JSON) provides **books**.
+- OMDb provides **movies** and requires an **API key**.
+- The frontend will offer a checkbox like **“Check for movie adaptation”**. When enabled, each book result triggers a follow-up OMDb search to see whether a movie with a matching title exists.
+
+---
+
+## Tasks
+
+### 10.1 Add `.env` support
+1. Install and add to `requirements.txt`:
+   - `python-dotenv`
+2. Create a `.env` file in the project root (do not commit it):
+   ```env
+   OMDB_API_KEY=your_key_here
+   ```
+3. Add `.env` to `.gitignore`.
+
+**Definition of Done**
+- You can start the Flask app and access `OMDB_API_KEY` via environment variables (not hard-coded in source).
+
+---
+
+### 10.2 Create an OMDb service module (backend)
+Create a small backend “service” function that calls OMDb using the key from the environment.
+
+**OMDb endpoint**
+- `http://www.omdbapi.com/?apikey=<key>&t=<title>`
+
+Recommended behavior:
+- Use `t=` (title lookup) first for simplicity.
+- If you want broader matching later, use `s=` (search) as an enhancement.
+
+**Definition of Done**
+- You can call OMDb from the backend and get a parsed JSON response.
+- If the key is missing or OMDb errors, you return a clear JSON error.
+
+---
+
+### 10.3 Add a new backend endpoint: movie lookup for a book title
+Add an endpoint that accepts a title and returns a simplified movie payload.
+
+Example:
+- `GET /api/omdb?title=<book_title>`
+
+Return a simplified response like:
+```json
+{
+  "found": true,
+  "title": "The Godfather",
+  "year": "1972",
+  "rated": "R",
+  "runtime": "175 min",
+  "imdb_id": "tt0068646",
+  "imdb_rating": "9.2",
+  "poster": "https://....jpg"
+}
+```
+
+If not found:
+```json
+{
+  "found": false
+}
+```
+
+**Definition of Done**
+- `/api/omdb?title=...` works in the browser and returns consistent JSON.
+- Missing `title` returns a 400 with a helpful error message.
+
+---
+
+### 10.4 Add UI: “Check for movie adaptation” checkbox
+On the frontend:
+1. Add a checkbox:
+   - Label: “Check for movie adaptation”
+2. When searching books:
+   - If the box is unchecked: display books normally.
+   - If checked: for each displayed book, make a follow-up request to:
+     - `/api/omdb?title=<book title>`
+
+Suggested UI behavior:
+- Show a placeholder under each result while loading:
+  - “Checking OMDb…”
+- When a movie is found, show:
+  - “Movie found: <title> (<year>) ⭐ <imdb_rating>”
+  - Optional: poster thumbnail
+- When not found:
+  - “No movie adaptation found.”
+
+**Definition of Done**
+- Checking the box causes the app to perform OMDb lookups after book results load.
+- Each book result can display whether a movie adaptation was found.
+
+---
+
+### 10.5 Add caching or throttling (lightweight)
+To avoid repeated lookups:
+- Add a simple in-memory cache on the frontend keyed by title, or
+- Add a backend cache keyed by title for the current run.
+
+**Definition of Done**
+- Repeating the same search does not spam OMDb with identical requests.
+
+---
+
+## Error Handling Requirements
+- If `OMDB_API_KEY` is missing:
+  - backend returns a 500 with a clear message like:
+    - `"OMDB_API_KEY is not set. Add it to your .env file."`
+- If OMDb returns not found:
+  - return `{ "found": false }`
+- If OMDb rate-limits or errors:
+  - return `{ "found": false, "error": "..." }` (or a 502 with details)
+
+---
+
+## Learning Goals
+By completing this stage, you can explain:
+- Why API keys should not be committed to Git
+- How environment variables and `.env` files work
+- How to extend an app by composing multiple APIs
+- How to handle many follow-up requests responsibly (caching/throttling)
+
+---
+## Stage 11 — Error Handling and “Polish”
 **Goal:** Make the app resilient and user-friendly.
 
 **Backend tasks**
@@ -302,7 +430,7 @@ OR
 
 ---
 
-## Stage 11 — Optional Enhancements
+## Stage 12 — Optional Enhancements
 Pick one or two if you have time.
 
 **Ideas**
