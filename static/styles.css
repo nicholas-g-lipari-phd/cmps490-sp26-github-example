@@ -1,1 +1,9 @@
-/* TODO: add styles based on wireframe */
+body {
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	margin: 2rem;
+	line-height: 1.4;
+}
+
+main {
+	max-width: 900px;
+}

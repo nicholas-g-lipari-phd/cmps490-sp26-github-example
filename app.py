@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app():
@@ -14,7 +14,7 @@ def create_app():
 
     @app.get("/")
     def index():
-        return "<!DOCTYPE html><html><head><title>Book Search</title></head><body><h1>Book Search</h1></body></html>"
+        return render_template("index.html")
 
     # TODO: register blueprints
 
