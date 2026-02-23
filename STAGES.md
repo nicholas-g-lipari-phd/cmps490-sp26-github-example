@@ -61,7 +61,7 @@ This project is designed to be built in small, testable steps. Each stage leaves
 **Goal:** Use a local JSON file as your “database” for testing.
 
 **Tasks**
-- Add `data/books.json` containing an array of book objects.
+- Add `data/books.json` containing an array of book objects (see PR #1).
 - Write a function to load and return the list of books.
 - Add:
   - `GET /api/books` returns *all* books (temporary).
