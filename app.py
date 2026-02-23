@@ -1,4 +1,6 @@
 from datetime import datetime, timezone
+import json
+from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request
 
@@ -14,9 +16,15 @@ def create_app():
     """
     app = Flask(__name__)
 
+    def load_books():
+        data_path = Path(app.root_path) / "data" / "books.json"
+        with data_path.open("r", encoding="utf-8") as file:
+            return json.load(file)
+
     @app.get("/")
     def index():
-        return render_template("index.html")
+        books = load_books()
+        return render_template("index.html", books=books)
 
     @app.get("/api/ping")
     def api_ping():
