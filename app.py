@@ -23,8 +23,8 @@ def create_app():
 
     @app.get("/")
     def index():
-        books = load_books()
-        return render_template("index.html", books=books)
+        loaded_books = load_books()
+        return render_template("index.html", template_books=loaded_books)
 
     @app.get("/api/ping")
     def api_ping():
