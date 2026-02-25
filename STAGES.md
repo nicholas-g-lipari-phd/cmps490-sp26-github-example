@@ -27,6 +27,11 @@ This project is designed to be built in small, testable steps. Each stage leaves
   - `GET /` returns a simple HTML page or text.
 - Add a `requirements.txt` (or `pyproject.toml`) for dependencies.
 
+**Progress**
+- [x] Create a Python virtual environment (venv) and install dependencies
+- [x] Add a minimal `app.py` with one route: `GET /` returns a simple HTML page or text
+- [x] Add a `requirements.txt` (or `pyproject.toml`) for dependencies
+
 **Definition of Done**
 - Running `python app.py` starts a server.
 - Visiting `http://localhost:5000/` shows your page.
@@ -42,6 +47,12 @@ This project is designed to be built in small, testable steps. Each stage leaves
   - `static/` for CSS and JS
 - Make `/` render an HTML template (not just a string).
 - Add a simple CSS file and confirm it loads.
+
+**Progress**
+- [x] Create `templates/` for HTML
+- [x] Create `static/` for CSS and JS
+- [x] Make `/` render an HTML template (not just a string)
+- [x] Add a simple CSS file and confirm it loads
 
 **Definition of Done**
 - The home page is rendered from `templates/index.html`.
@@ -124,6 +135,12 @@ This project is designed to be built in small, testable steps. Each stage leaves
    }
    ```
 
+**Progress**
+- [x] Return basic status — `GET /api/ping` returns `{"status": "ok"}`
+- [x] Add diagnostic information (message, server time, user agent, client IP, request method)
+- [x] Add a readable "Ping Viewer" page at `GET /ping` that fetches `/api/ping` and displays the JSON
+- [x] Add CSS styling for the JSON block
+
 **Definition of Done**
 
 - `/api/ping` returns valid JSON including:
@@ -149,6 +166,11 @@ This project is designed to be built in small, testable steps. Each stage leaves
 - Add:
   - `GET /api/books` returns *all* books (temporary).
 
+**Progress**
+- [x] Add `data/books.json` containing an array of book objects
+- [x] Write a function to load and return the list of books
+- [ ] Add `GET /api/books` returns all books (route defined in `routes/books.py` but blueprint not registered in `app.py`)
+
 **Definition of Done**
 - `/api/books` returns the list from your JSON file.
 - If you change the JSON file, the endpoint response changes.
@@ -167,6 +189,11 @@ This project is designed to be built in small, testable steps. Each stage leaves
 - Decide what to do when `title` is missing or empty:
   - Option A: return all books
   - Option B: return an empty list
+
+**Progress**
+- [ ] Read the `title` query parameter from `/api/books?title=term`
+- [ ] Filter the list of books by title (case-insensitive, partial match)
+- [ ] Decide what to do when `title` is missing or empty
 
 **Definition of Done**
 - `/api/books?title=...` returns relevant matches.
@@ -187,6 +214,11 @@ This project is designed to be built in small, testable steps. Each stage leaves
 - If the ID does not exist, return a 404 status code with JSON:
   - `{"error": "Book not found"}`
 
+**Progress**
+- [x] Add unique IDs in `books.json`
+- [ ] Implement lookup by ID
+- [ ] Return 404 with JSON `{"error": "Book not found"}` for missing IDs
+
 **Definition of Done**
 - `/api/books/123` returns one book (if it exists).
 - Nonexistent IDs return a helpful JSON error and a 404.
@@ -205,6 +237,11 @@ This project is designed to be built in small, testable steps. Each stage leaves
   - `/api/books?title=...`
 - Display results as a clickable list.
 
+**Progress**
+- [ ] Add a text input, "Search" button, and results area to `index.html`
+- [ ] Use `fetch()` in `static/app.js` to call `/api/books?title=...`
+- [ ] Display results as a clickable list
+
 **Definition of Done**
 - Searching from the page updates the results list.
 - You can open DevTools (Network tab) and see requests being made.
@@ -222,6 +259,10 @@ This project is designed to be built in small, testable steps. Each stage leaves
   - title
   - author(s)
   - description (if present)
+
+**Progress**
+- [ ] Call `/api/books/<id>` when a book is clicked
+- [ ] Display details (title, author(s), description) in a "details" section
 
 **Definition of Done**
 - Clicking a book fetches details and updates the details section.
@@ -242,6 +283,11 @@ This project is designed to be built in small, testable steps. Each stage leaves
   - `step1_filter_or_select_fields(books)`
   - `step2_sort_or_format(books)`
 - Apply them in sequence for the search endpoint response.
+
+**Progress**
+- [ ] Create `step1_filter_or_select_fields(books)` function
+- [ ] Create `step2_sort_or_format(books)` function
+- [ ] Apply both steps in sequence for the search endpoint response
 
 **Examples of Two-Step Pipelines**
 - Step 1: filter books by title
@@ -273,6 +319,10 @@ OR
   - `/api/books?title=term` should still work
   - `/api/books/<id>` should still work (you may define what “id” means here)
 
+**Progress**
+- [ ] Create a service function that calls the Google Books API and extracts needed fields
+- [ ] Keep `/api/books?title=term` and `/api/books/<id>` endpoints stable (frontend unchanged)
+
 **Definition of Done**
 - Searching uses live data from Google Books.
 - Your frontend still works without changes to routes.
@@ -300,6 +350,11 @@ OR
    ```
 3. Add `.env` to `.gitignore`.
 
+**Progress**
+- [ ] Install `python-dotenv` and add to `requirements.txt`
+- [ ] Create a `.env` file in the project root (not committed)
+- [ ] Add `.env` to `.gitignore`
+
 **Definition of Done**
 - You can start the Flask app and access `OMDB_API_KEY` via environment variables (not hard-coded in source).
 
@@ -314,6 +369,10 @@ Create a small backend “service” function that calls OMDb using the key from
 Recommended behavior:
 - Use `t=` (title lookup) first for simplicity.
 - If you want broader matching later, use `s=` (search) as an enhancement.
+
+**Progress**
+- [ ] Create an OMDb service module that calls the OMDb API using the key from the environment
+- [ ] Handle missing key and OMDb errors with a clear JSON error response
 
 **Definition of Done**
 - You can call OMDb from the backend and get a parsed JSON response.
@@ -348,6 +407,11 @@ If not found:
 }
 ```
 
+**Progress**
+- [ ] Add `GET /api/omdb?title=<book_title>` endpoint
+- [ ] Return simplified movie payload or `{"found": false}`
+- [ ] Return 400 with a helpful error message for missing `title`
+
 **Definition of Done**
 - `/api/omdb?title=...` works in the browser and returns consistent JSON.
 - Missing `title` returns a 400 with a helpful error message.
@@ -372,6 +436,11 @@ Suggested UI behavior:
 - When not found:
   - “No movie adaptation found.”
 
+**Progress**
+- [ ] Add “Check for movie adaptation” checkbox to the frontend
+- [ ] Perform OMDb lookups for each book result when the checkbox is checked
+- [ ] Display movie found / not found message for each book result
+
 **Definition of Done**
 - Checking the box causes the app to perform OMDb lookups after book results load.
 - Each book result can display whether a movie adaptation was found.
@@ -382,6 +451,9 @@ Suggested UI behavior:
 To avoid repeated lookups:
 - Add a simple in-memory cache on the frontend keyed by title, or
 - Add a backend cache keyed by title for the current run.
+
+**Progress**
+- [ ] Add a simple in-memory cache (frontend or backend) to avoid repeated OMDb requests for the same title
 
 **Definition of Done**
 - Repeating the same search does not spam OMDb with identical requests.
@@ -424,6 +496,13 @@ By completing this stage, you can explain:
   - server errors
 - Disable the Search button while a request is in progress (optional).
 
+**Progress**
+- [ ] Handle missing query parameters gracefully (backend)
+- [ ] Handle Google API failures: network errors, non-200 responses, empty results (backend)
+- [ ] Return clear JSON errors with appropriate status codes (backend)
+- [ ] Show a friendly message for no results and server errors (frontend)
+- [ ] Disable the Search button while a request is in progress (optional)
+
 **Definition of Done**
 - App behaves predictably even when something goes wrong.
 - Users get helpful messages instead of a broken screen.
@@ -439,6 +518,9 @@ Pick one or two if you have time.
 - Add a loading spinner.
 - Add additional filters (author, published year).
 - Add unit tests for transformation functions.
+
+**Progress**
+- [ ] Select and implement one or two optional enhancements
 
 **Definition of Done**
 - Enhancement works and does not break earlier stages.
