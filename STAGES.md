@@ -191,9 +191,9 @@ This project is designed to be built in small, testable steps. Each stage leaves
   - Option B: return an empty list
 
 **Progress**
-- [ ] Read the `title` query parameter from `/api/books?title=term`
-- [ ] Filter the list of books by title (case-insensitive, partial match)
-- [ ] Decide what to do when `title` is missing or empty
+- [x] Read the `title` query parameter from `/api/books?title=term`
+- [x] Filter the list of books by title (case-insensitive, partial match)
+- [x] Decide what to do when `title` is missing or empty
 
 **Definition of Done**
 - `/api/books?title=...` returns relevant matches.

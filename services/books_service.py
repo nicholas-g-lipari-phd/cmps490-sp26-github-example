@@ -13,8 +13,11 @@ def get_all_books():
 
 
 def search_books_by_title(title):
-    # TODO: implement filtering in Stage 4
-    return load_books()
+    books = load_books()
+    if not title:
+        return books
+    term = title.lower()
+    return [book for book in books if term in book.get("title", "").lower()]
 
 
 def get_book_by_id(book_id):
