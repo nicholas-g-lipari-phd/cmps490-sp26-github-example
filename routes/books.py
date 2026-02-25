@@ -1,13 +1,17 @@
 from flask import Blueprint, jsonify, request
 
+from services.books_service import get_all_books
+
 books_bp = Blueprint("books", __name__)
 
 
 @books_bp.get("/api/books")
 def search_books():
     title = request.args.get("title", "")
-    # TODO: call service and return results
-    return jsonify({"title": title, "items": []})
+    if title:
+        return jsonify({"title": title, "items": []})
+
+    return jsonify(get_all_books())
 
 
 @books_bp.get("/api/books/<book_id>")

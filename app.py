@@ -4,6 +4,8 @@ from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request
 
+from routes.books import books_bp
+
 
 def create_app():
     """
@@ -23,8 +25,7 @@ def create_app():
 
     @app.get("/")
     def index():
-        loaded_books = load_books()
-        return render_template("index.html", template_books=loaded_books)
+        return render_template("index.html")
 
     @app.get("/api/ping")
     def api_ping():
@@ -43,7 +44,7 @@ def create_app():
     def ping_viewer():
         return render_template("ping.html")
 
-    # TODO: register blueprints
+    app.register_blueprint(books_bp)
 
     return app
 
