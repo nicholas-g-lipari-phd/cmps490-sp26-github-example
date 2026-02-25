@@ -169,7 +169,7 @@ This project is designed to be built in small, testable steps. Each stage leaves
 **Progress**
 - [x] Add `data/books.json` containing an array of book objects
 - [x] Write a function to load and return the list of books
-- [ ] Add `GET /api/books` returns all books (route defined in `routes/books.py` but blueprint not registered in `app.py`)
+- [x] Add `GET /api/books` returns all books
 
 **Definition of Done**
 - `/api/books` returns the list from your JSON file.
